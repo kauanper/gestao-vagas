@@ -34,7 +34,7 @@ public class ExceptionHandlerController {
 
         List<ErrorMessageDTO> dto = new ArrayList<>(); // Aqui vamos guardar todos os erros encontrados
 
-        // Para cada erro de validação que aconteceu...
+        // Para cada erro de validação que aconteceu...//
         ex.getBindingResult().getFieldErrors().forEach(error -> {
             // Pegamos a mensagem de erro traduzida (por exemplo: "O campo nome é obrigatório")
             String errorMessage = messageSource.getMessage(error, LocaleContextHolder.getLocale());
