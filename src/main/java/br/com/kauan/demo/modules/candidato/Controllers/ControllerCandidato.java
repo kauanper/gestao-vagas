@@ -1,5 +1,6 @@
 package br.com.kauan.demo.modules.candidato.Controllers;
 
+import br.com.kauan.demo.Exceptions.UsurnameExiste;
 import br.com.kauan.demo.modules.candidato.CandidatoEntity;
 import br.com.kauan.demo.modules.candidato.CandidatoRepository;
 import jakarta.validation.Valid;
@@ -18,6 +19,13 @@ public class ControllerCandidato {
 
     @PostMapping("/")
     public CandidatoEntity create(@Valid @RequestBody CandidatoEntity candidato) {
+
+        this.candidatoRepository
+                .findByUsernameOrEmail(candidato.getUsername(), candidato.getEmail())
+                .ifPresent((user) -> {
+                    throw new UsurnameExiste();
+                });
+
         return this.candidatoRepository.save(candidato);
     }
 }

@@ -2,6 +2,7 @@ package br.com.kauan.demo.modules.candidato;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
 import java.util.UUID;
                                                            //Entidade       //tipo de Id dela
 public interface CandidatoRepository extends JpaRepository<CandidatoEntity, UUID> {
@@ -11,5 +12,7 @@ public interface CandidatoRepository extends JpaRepository<CandidatoEntity, UUID
     * algumas palavras como atalho.
     * Ao escrever findBy o spring irá fazer um select (Or, And tbm são palavras automatizadas)
     */
-    CandidatoEntity findByUsernameOrEmail(String username, String email);
+    Optional<CandidatoEntity> findByUsernameOrEmail(String username, String email);
+
+
 }
