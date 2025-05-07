@@ -46,4 +46,4 @@ public class ExceptionHandlerController {
         // Retornamos todos os erros com o status 400 (BAD REQUEST) em formato de JSON
         return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
     }
-}
+}//a
